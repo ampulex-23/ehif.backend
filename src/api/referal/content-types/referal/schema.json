@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "referals",
+  "info": {
+    "singularName": "referal",
+    "pluralName": "referals",
+    "displayName": "Referal"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "accepted",
+        "expired"
+      ],
+      "default": "pending",
+      "required": true
+    },
+    "slave": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "referals"
+    }
+  }
+}

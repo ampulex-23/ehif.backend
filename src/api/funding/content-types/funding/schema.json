@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fundings",
+  "info": {
+    "singularName": "funding",
+    "pluralName": "fundings",
+    "displayName": "Funding",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "accepted_at": {
+      "type": "datetime"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "approved",
+        "accepted",
+        "rejected"
+      ],
+      "default": "pending",
+      "required": true
+    },
+    "amount": {
+      "type": "float"
+    },
+    "currency": {
+      "type": "enumeration",
+      "enum": [
+        "APE",
+        "AXS",
+        "XRP",
+        "ADA",
+        "LTC"
+      ]
+    },
+    "transfer_hash": {
+      "type": "text"
+    },
+    "transfer_qr": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "fundings"
+    }
+  }
+}
